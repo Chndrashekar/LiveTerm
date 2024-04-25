@@ -1,7 +1,6 @@
 import axios from 'axios';
 import config from '../../config.json';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import "dotenv/config";
 
 export const getProjects = async () => {
   const { data } = await axios.get(
@@ -33,7 +32,7 @@ export const getQuote = async () => {
 
 export const getGemini = async (args: string[]): Promise<string> => {
   // For text-only input, use the gemini-pro model
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  const genAI = new GoogleGenerativeAI("AIzaSyDk7IC4g3sO4jaIP3JUqRdoGUn38wqjDNs");
   const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 
   const prompt = args.join(' ');
