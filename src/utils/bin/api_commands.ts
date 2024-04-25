@@ -40,7 +40,11 @@ export const chatbot = async (): Promise<string> => {
 };
 
 export const google = async (args: string[]): Promise<string> => {
-  const response = await getGemini(args);
-  return `Getting response from Gemini AI...\n
+  try {
+    const response = await getGemini(args);
+    return `Getting response from Gemini AI...\n
   ${response}`;
+  } catch (error) {
+    return "Uh oh! Caught error while fetching AI response. Try again!";
+  }
 };
