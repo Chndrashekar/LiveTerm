@@ -8,7 +8,11 @@ export const help = async (args: string[]): Promise<string> => {
   const commands = Object.keys(bin).sort().join(', ');
   var c = '';
   for (let i = 1; i <= Object.keys(bin).sort().length; i++) {
-    c += Object.keys(bin).sort()[i - 1] + '\n';
+    if( i%2 == 0 ){
+      c += Object.keys(bin).sort()[i - 1] + '\n';
+    } else {
+      c += Object.keys(bin).sort()[i - 1] + '\t\t';
+    }
   }
   return `Welcome! Here are all the available commands:
 \n${c}\n
