@@ -1,6 +1,8 @@
 import axios from 'axios';
 import config from '../../config.json';
 
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
 export const getProjects = async () => {
   const { data } = await axios.get(
     `https://api.github.com/users/${config.social.github}/repos`,
@@ -27,4 +29,17 @@ export const getQuote = async () => {
   return {
     quote: `“${data.content}” — ${data.author}`,
   };
+};
+
+export const getGemini = async (args: string[]): Promise<string> => {
+  // For text-only input, use the gemini-pro model
+  const genAI = new GoogleGenerativeAI("AIzaSyDk7IC4g3sO4jaIP3JUqRdoGUn38wqjDNs");
+  const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+
+  const prompt = args.join(' ');
+
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  const text = response.text();
+  return text;
 };

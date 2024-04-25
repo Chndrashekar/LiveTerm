@@ -1,6 +1,6 @@
 // // List of commands that require API calls
 
-import { getProjects } from '../api';
+import { getGemini, getProjects } from '../api';
 import { getQuote } from '../api';
 import { getReadme } from '../api';
 import { getWeather } from '../api';
@@ -33,4 +33,14 @@ export const weather = async (args: string[]): Promise<string> => {
   }
   const weather = await getWeather(city);
   return weather;
+};
+
+export const chatbot = async (): Promise<string> => {
+  return `don't ask me... ask google\nformat: google how to make the best coffee to code?`;
+};
+
+export const google = async (args: string[]): Promise<string> => {
+  const response = await getGemini(args);
+  return `Getting response from Gemini AI...\n
+  ${response}`;
 };
