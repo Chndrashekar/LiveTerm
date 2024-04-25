@@ -8,11 +8,11 @@ export const help = async (args: string[]): Promise<string> => {
   const commands = Object.keys(bin).sort().join(', ');
   const space_count = 20;
   var c = '';
-  for (let i = 1; i <= commands.length; i++) {
-    if( i%2 == 0 ){
-      c += commands[i - 1] + '\n';
+  for (let i = 1; i <= Object.keys(bin).sort().length; i++) {
+    if (i % 2 === 0) {
+      c += Object.keys(bin).sort()[i - 1] + '\n';
     } else {
-      c += commands[i - 1];
+      c += Object.keys(bin).sort()[i - 1];
       const spaces = ' '.repeat(space_count - commands[i].length);
       c += spaces + '\t'; // Tab separation
     }
