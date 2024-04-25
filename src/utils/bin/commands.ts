@@ -6,12 +6,15 @@ import config from '../../../config.json';
 // Help
 export const help = async (args: string[]): Promise<string> => {
   const commands = Object.keys(bin).sort().join(', ');
+  const space_count = 20;
   var c = '';
-  for (let i = 1; i <= Object.keys(bin).sort().length; i++) {
+  for (let i = 1; i <= commands.length; i++) {
     if( i%2 == 0 ){
-      c += Object.keys(bin).sort()[i - 1] + '\n';
+      c += commands[i - 1] + '\n';
     } else {
-      c += Object.keys(bin).sort()[i - 1] + '\t\t';
+      c += commands[i - 1];
+      const spaces = ' '.repeat(space_count - commands[i].length);
+      c += spaces + '\t'; // Tab separation
     }
   }
   return `Welcome! Here are all the available commands:
