@@ -13,7 +13,7 @@ export const help = async (args: string[]): Promise<string> => {
       c += Object.keys(bin).sort()[i - 1] + '\n';
     } else {
       c += Object.keys(bin).sort()[i - 1];
-      const spaces = ' '.repeat(space_count - commands[i].length);
+      const spaces = ' '.repeat(space_count - Object.keys(bin).sort()[i - 1].length);
       c += spaces + '\t'; // Tab separation
     }
   }

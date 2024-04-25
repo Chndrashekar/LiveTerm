@@ -1,6 +1,7 @@
 import axios from 'axios';
 import config from '../../config.json';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import "dotenv/config";
 
 export const getProjects = async () => {
   const { data } = await axios.get(
