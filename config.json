@@ -2,16 +2,20 @@
   "readmeUrl": "https://github.com/Chndrashekar/LiveTerm/blob/main/README.md",
   "title": "Chandra",
   "name": "Chandrashekar",
-  "ascii": "liveterm",
+  "ascii": "chand",
   "social": {
     "github": "Chndrashekar",
     "linkedin": "chandra-guru"
   },
-  "email": "contact@email.com",
+  "email": "chandra.g8357@email.com",
   "ps1_hostname": "chandra.io",
   "ps1_username": "guest",
   "repo": "https://github.com/Chndrashekar/LiveTerm",
   "resume_url": "https://drive.google.com/file/d/1Ij4rl_nzrUZ4Q06Ki2iaFcBCHafhlw7h/view?usp=sharing",
+  "donate_urls": {
+    "paypal": "",
+    "patreon": ""
+  },
   "colors": {
     "light": {
       "background": "#FBF1C9",

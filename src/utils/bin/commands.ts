@@ -133,7 +133,7 @@ export const emacs = async (args?: string[]): Promise<string> => {
 };
 
 export const vscode = async (args?: string[]): Promise<string> => {
-  return `'vscode'? a true linux enthusiast would use 'vim'`;
+  return `'vscode'? a true linux enthusiast would use 'vi'`;
 };
 
 export const sudo = async (args?: string[]): Promise<string> => {
