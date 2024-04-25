@@ -1,7 +1,6 @@
 import axios from 'axios';
 import config from '../../config.json';
-
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const getProjects = async () => {
   const { data } = await axios.get(
