@@ -32,7 +32,7 @@ export const getQuote = async () => {
 
 export const getGemini = async (args: string[]): Promise<string> => {
   // For text-only input, use the gemini-pro model
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 
   const prompt = args.join(' ');
