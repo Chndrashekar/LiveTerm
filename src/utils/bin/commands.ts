@@ -5,7 +5,6 @@ import config from '../../../config.json';
 
 // Help
 export const help = async (args: string[]): Promise<string> => {
-  const commands = Object.keys(bin).sort().join(', ');
   const space_count = 20;
   var c = '';
   for (let i = 1; i <= Object.keys(bin).sort().length; i++) {
@@ -36,9 +35,9 @@ export const about = async (args: string[]): Promise<string> => {
   return `Hi, I am ${config.name}. 
 Welcome to my website!
 More about me:
-'sumfetch' - short summary.
-'resume' - my latest resume.
-'readme' - my github readme.`;
+type 'sumfetch' - for short summary.
+type 'resume' - for my latest resume.
+type 'readme' - for my github readme.`;
 };
 
 export const resume = async (args: string[]): Promise<string> => {
@@ -73,11 +72,11 @@ export const linkedin = async (args: string[]): Promise<string> => {
   return 'Opening linkedin...';
 };
 
-// // Search
-// export const google = async (args: string[]): Promise<string> => {
-//   window.open(`https://google.com/search?q=${args.join(' ')}`);
-//   return `Searching google for ${args.join(' ')}...`;
-// };
+// Search
+export const google = async (args: string[]): Promise<string> => {
+  window.open(`https://google.com/search?q=${args.join(' ')}`);
+  return `Searching google for ${args.join(' ')}...`;
+};
 
 export const duckduckgo = async (args: string[]): Promise<string> => {
   window.open(`https://duckduckgo.com/?q=${args.join(' ')}`);
@@ -104,15 +103,27 @@ export const whoami = async (args: string[]): Promise<string> => {
 };
 
 export const ls = async (args: string[]): Promise<string> => {
-  return `a
-bunch
-of
-fake
-directories`;
+  const space_count = 20;
+  var c = '';
+  for (let i = 1; i <= Object.keys(bin).sort().length; i++) {
+    if (i % 2 === 0) {
+      c += Object.keys(bin).sort()[i - 1] + '\n';
+    } else {
+      c += Object.keys(bin).sort()[i - 1];
+      const spaces = ' '.repeat(space_count - Object.keys(bin).sort()[i - 1].length);
+      c += spaces + '\t'; // Tab separation
+    }
+  }
+  return `Welcome! Here are all the available commands:
+\n${c}\n
+[tab]: trigger completion.
+[ctrl+l]/clear: clear terminal.\n
+Type 'sumfetch' to display summary.
+`;
 };
 
 export const cd = async (args: string[]): Promise<string> => {
-  return `access restricted by the admin. your actions will be reported.`;
+  return `access restricted by the admin.`;
 };
 
 export const date = async (args: string[]): Promise<string> => {
@@ -151,9 +162,8 @@ export const banner = (args?: string[]): string => {
   █▀▀ █░█ ▄▀█ █▄░█ █▀▄ █▀█ ▄▀█   █▀▀ █░█ █▀█ █░█
   █▄▄ █▀█ █▀█ █░▀█ █▄▀ █▀▄ █▀█   █▄█ █▄█ █▀▄ █▄█
 
-Type 'help' to see the list of available commands.
+Type 'ls' or 'help' to see the list of available commands.
 Type 'sumfetch' to display summary.
-Bored? Try chatbot (beta).
 Type 'repo' or click <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.repo}" target="_blank">here</a></u> for the Github repository.
 `;
 };

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import config from '../../config.json';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const getProjects = async () => {
   const { data } = await axios.get(
@@ -28,17 +27,4 @@ export const getQuote = async () => {
   return {
     quote: `“${data.content}” — ${data.author}`,
   };
-};
-
-export const getGemini = async (args: string[]): Promise<string> => {
-  // For text-only input, use the gemini-pro model
-  const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-
-  const prompt = args.join(' ');
-
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  return text;
 };
